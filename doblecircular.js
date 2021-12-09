@@ -58,13 +58,13 @@ class listaDoble{
     mostrar(){
       
         let aux = this.primero;
-        console.log("***** Mostar Lista *****")
+        console.log("***** Mostar Lista *****")   
        
-       do{
+        do{
         console.log("-> " + aux.dato);
         aux = aux.siguiente;
-       }while(aux != this.ultimo)
-       console.log("-> " + aux.dato);
+       }while(aux != this.primero)
+      
         
     }
 }
