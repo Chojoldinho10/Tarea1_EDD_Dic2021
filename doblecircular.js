@@ -18,45 +18,54 @@ class listaDoble{
         if(this.primero == null){  //la lista esta vacia
             this.primero = nuevo;
             this.ultimo = nuevo;
-            console.log("***** se agrego el primero *****")
-            
+            this.primero.siguiente = nuevo;
+            this.primero.anterior = nuevo;
+            this.ultimo.siguiente = nuevo;
+            this.ultimo.anterior = nuevo;
+           
+           
         }else{
             
             let aux = this.primero;
-            if(aux == this.ultimo){
-                aux.siguiente = nuevo;
-                nuevo.anterior = aux;
-                this.ultimo = nuevo;
-                console.log("***** se agrego el segundo *****")
-            }else{
-                while(aux.siguiente != this.ultimo){
-                    console.log("***** entro al while *****")
-                    aux = aux.siguiente;
-                };
-                console.log("***** se agrego el tercero *****")
-                aux.siguiente = nuevo;
+            
+            if(this.primero == this.ultimo){ //Solo hay un nodo
+                this.primero.siguiente = nuevo;
                 this.primero.anterior = nuevo;
-                nuevo.anterior = this.ultimo;
+                nuevo.anterior = this.primero;
                 nuevo.siguiente = this.primero;
                 this.ultimo = nuevo;
                 
+
+            }else{
+               
+                while(aux != this.ultimo){
+                    aux = aux.siguiente;
+
+                };
+               
+                aux.siguiente = nuevo;
+                nuevo.anterior = aux;
+                nuevo.siguiente = this.primero;
+                this.primero.anterior = nuevo;
+                this.ultimo = nuevo;
+
+               
             }
             
         }
-
-
     }
 
     mostrar(){
+      
         let aux = this.primero;
-        console.log("***** Mostar Lista  Doble Circular *****")
-        while(aux != this.ultimo){
-            console.log("-> " + aux.dato);
-            console.log("-> " + aux.siguiente.dato);
-            console.log("-> " + aux.anterior.dato);
-
-            aux = aux.siguiente;
-        }
+        console.log("***** Mostar Lista *****")
+       
+       do{
+        console.log("-> " + aux.dato);
+        aux = aux.siguiente;
+       }while(aux != this.ultimo)
+       console.log("-> " + aux.dato);
+        
     }
 }
 
@@ -66,4 +75,5 @@ lista.insertar(1);
 lista.insertar(12);
 lista.insertar(7);
 lista.insertar(5);
+lista.insertar(3);
 lista.mostrar();
